@@ -81,7 +81,10 @@ def main():
                 if 'humidity_pc' in reading[sensor]:
                     o['humidity'] = reading[sensor]['humidity_pc']
                 output.append(o)
-        print('%s'%(json.dumps(output)))
+        if len(output)==1:
+            print('%s'%(json.dumps(output[0])))
+        else:
+            print('%s'%(json.dumps(output)))
     else:
         for i, reading in enumerate(readings):
             output = ''
