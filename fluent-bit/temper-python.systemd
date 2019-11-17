@@ -1,0 +1,18 @@
+#
+# https://medium.com/@benmorel/creating-a-linux-service-with-systemd-611b5c8b91d6
+
+[Unit]
+Description=${NAME} service using fluent-bit and temper-python
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=root
+ExecStart=${PREFIX}/bin/fluent-bit -c ${PREFIX}/etc/fluent-bit/temper-python.cfg -R ${PREFIX}/etc/fluent-bit/parsers.conf
+
+[Install]
+WantedBy=multi-user.target
+
