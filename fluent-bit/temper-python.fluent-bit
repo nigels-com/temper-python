@@ -1,0 +1,25 @@
+[INPUT]
+    Name         exec
+    Command      ${PREFIX}/bin/temper-poll -j | jq -c .[]
+    Parser       json
+    Interval_Sec 60
+    Tag          temper
+
+[INPUT]
+    Name         cpu
+    Interval_Sec 60
+    Tag          cpu
+
+[INPUT]
+    Name         mem
+    Interval_Sec 60
+    Tag          memory
+
+[INPUT]
+    Name         thermal
+    Interval_Sec 60
+    Tag          thermal
+
+[OUTPUT]
+    Name  stdout
+    Match *
